@@ -44,7 +44,6 @@ bool NQueensBranching(short int n, short int j) {
                 Display(n);
                 cout << endl;
                 ++count;
-                // return true;
             }
             int temp = startRow;
             MarkDangerScore(i, j, n, true);
@@ -56,8 +55,6 @@ bool NQueensBranching(short int n, short int j) {
                 startRow = temp;
                 ChessBoard[i][j] = 0;
             }
-            // else 
-            //     return true;
         }
         else {
             Location[j] = 0;
@@ -66,41 +63,6 @@ bool NQueensBranching(short int n, short int j) {
     }
     return false;
 }
-
-bool IsAtDiagonal1(short int i, short int j, short int n) {
-    for(short int k = 1; k <= n; k++) {
-        if(k != j && Location[k] != 0 && abs(Location[k]-i) == abs(k-j))
-            return true;
-    }
-    return false;
-}
-
-bool NQueens(short int n, short int j) {
-    for(short int i = 1; i <= n; i++) {
-        ChessBoard[i][j] = 1;
-        Location[j] = i;
-        if(!Row[i] && !IsAtDiagonal1(i, j, n)) {
-            if(j == n) 
-                return true;
-            Row[i] = true;
-            bool ans = NQueens(n, j+1);
-            if(ans == false) {
-                Location[j] = 0;
-                Row[i] = false;
-                ChessBoard[i][j] = 0;
-            }
-            else 
-                return true;
-        }
-        else {
-            Location[j] = 0;
-            ChessBoard[i][j] = 0;
-        }
-    }
-    return false;
-}
-
-
 
 int main() {
     short int n;
@@ -120,6 +82,5 @@ int main() {
 
     cout << "Time using Branch and Bound: " << time.count() << "s" << endl;
     cout << "Possible solutions: " << count << endl;
-    cin >> n;
     return 0;
 }
