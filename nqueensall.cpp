@@ -6,7 +6,8 @@ using namespace std::chrono;
 
 short int ChessBoard[100][100] = {0};
 short int Location[100] = {0};
-short int startRow = 1, count = 0;
+short int startRow = 1;
+long long count = 0;
 bool Row[100] = {0};
 bool FrontSlashedDiagonal[201] = {0};
 bool BackSlashedDiagonal[201] = {0};
